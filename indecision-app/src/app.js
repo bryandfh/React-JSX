@@ -24,6 +24,12 @@ const onRemoveAll = (e) => {
   render();
 };
 
+const appRoot = document.getElementById('app');
+
+const number = [55, 101, 1000];
+
+console.log(app.options)
+
 const render = () => {
   let template = (
     <div>
@@ -32,9 +38,18 @@ const render = () => {
       <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
       <p>{app.options.length}</p>
       <button onClick = {onRemoveAll}>Reset </button>
+      {
+        number.map ((number) => {
+          return <p key = {number}>Number : {number * 2}</p>
+        })
+      }
+      
       <ol>
-        <li>Item one!</li>
-        <li>Item two!</li>
+        {
+          app.options.map ((options) => {
+            return <li key = {options}>Option: {options}</li>
+          })
+        }
       </ol>
 
       <form onSubmit = {onFormSubmit}>
@@ -45,9 +60,9 @@ const render = () => {
   );
 
   ReactDOM.render(template, appRoot);
-
+0
 };
 
-const appRoot = document.getElementById('app');
+
 
 render();

@@ -25,6 +25,12 @@ var onRemoveAll = function onRemoveAll(e) {
   render();
 };
 
+var appRoot = document.getElementById('app');
+
+var number = [55, 101, 1000];
+
+console.log(app.options);
+
 var render = function render() {
   var template = React.createElement(
     'div',
@@ -54,19 +60,25 @@ var render = function render() {
       { onClick: onRemoveAll },
       'Reset '
     ),
+    number.map(function (number) {
+      return React.createElement(
+        'p',
+        { key: number },
+        'Number : ',
+        number * 2
+      );
+    }),
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Item one!'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Item two!'
-      )
+      app.options.map(function (options) {
+        return React.createElement(
+          'li',
+          { key: options },
+          'Option: ',
+          options
+        );
+      })
     ),
     React.createElement(
       'form',
@@ -81,8 +93,7 @@ var render = function render() {
   );
 
   ReactDOM.render(template, appRoot);
+  0;
 };
-
-var appRoot = document.getElementById('app');
 
 render();
