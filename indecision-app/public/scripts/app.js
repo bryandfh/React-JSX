@@ -29,7 +29,11 @@ var appRoot = document.getElementById('app');
 
 var number = [55, 101, 1000];
 
-console.log(app.options);
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var option = app.options[randomNum];
+  console.log(option);
+};
 
 var render = function render() {
   var template = React.createElement(
@@ -51,23 +55,15 @@ var render = function render() {
       app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
-      'p',
-      null,
-      app.options.length
+      'button',
+      { disabled: app.options.length == 0, onClick: onMakeDecision },
+      'What should I do?'
     ),
     React.createElement(
       'button',
       { onClick: onRemoveAll },
       'Reset '
     ),
-    number.map(function (number) {
-      return React.createElement(
-        'p',
-        { key: number },
-        'Number : ',
-        number * 2
-      );
-    }),
     React.createElement(
       'ol',
       null,

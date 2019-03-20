@@ -28,7 +28,11 @@ const appRoot = document.getElementById('app');
 
 const number = [55, 101, 1000];
 
-console.log(app.options)
+const onMakeDecision = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length);
+  const option = app.options[randomNum];
+  console.log(option);
+};
 
 const render = () => {
   let template = (
@@ -36,19 +40,11 @@ const render = () => {
       <h1>{app.title}</h1>
       {app.subtitle && <p>{app.subtitle}</p>}
       <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-      <p>{app.options.length}</p>
-      <button onClick = {onRemoveAll}>Reset </button>
-      {
-        number.map ((number) => {
-          return <p key = {number}>Number : {number * 2}</p>
-        })
-      }
-      
+      <button disabled={app.options.length == 0} onClick = {onMakeDecision}>What should I do?</button>
+      <button onClick = {onRemoveAll}>Reset </button>    
       <ol>
         {
-          app.options.map ((options) => {
-            return <li key = {options}>Option: {options}</li>
-          })
+          app.options.map ((options) => <li key = {options}>Option: {options}</li>)
         }
       </ol>
 
