@@ -1,7 +1,7 @@
 const appRoot = document.getElementById('app');
 
 let app = {
-    title: 'Visibility Toggle',
+    title: 'Visibility Toggle!',
     options: 'Hey some text',
 };
 
