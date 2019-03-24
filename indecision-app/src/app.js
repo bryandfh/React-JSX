@@ -15,8 +15,7 @@ class IndecisionApp extends React.Component {
 }
 
 class Header extends React.Component {
-  render() {
-    
+  render() {    
     return (
       <div>
         <h1>{this.props.tittle}</h1>
@@ -37,9 +36,14 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+  handleRemoveAll(){
+    alert("sup")
+  };
+  
   render() {
     return (
       <div>
+        <button onClick = {this.handleRemoveAll}>Remove</button>
         {
           this.props.options.map ((options) => <Option key={options} optionsText={options}/>)
         }

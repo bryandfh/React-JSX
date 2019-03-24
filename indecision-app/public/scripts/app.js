@@ -49,7 +49,6 @@ var Header = function (_React$Component2) {
   _createClass(Header, [{
     key: 'render',
     value: function render() {
-
       return React.createElement(
         'div',
         null,
@@ -107,11 +106,21 @@ var Options = function (_React$Component4) {
   }
 
   _createClass(Options, [{
+    key: 'handleRemoveAll',
+    value: function handleRemoveAll() {
+      alert("sup");
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
         null,
+        React.createElement(
+          'button',
+          { onClick: this.handleRemoveAll },
+          'Remove'
+        ),
         this.props.options.map(function (options) {
           return React.createElement(Option, { key: options, optionsText: options });
         }),
