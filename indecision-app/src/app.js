@@ -1,3 +1,13 @@
+const obj = {
+  name : 'Bryan',
+  getName(){
+    return this.name  
+  }
+};
+
+const getName = obj.getName.bind(obj);
+console.log(getName()); 
+
 class IndecisionApp extends React.Component {
   render() {
     const tittle = 'Indecision';
@@ -36,8 +46,13 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+  constructor(props){
+    super(props);
+    this.handleRemoveAll = this.handleRemoveAll.bind(this);
+  }
   handleRemoveAll(){
     alert("sup")
+    console.log(this.props.options)
   };
   
   render() {
@@ -64,11 +79,22 @@ class Option extends React.Component {
 }
 
 class AddOptions extends React.Component {
+  onFormSubmit(e) {
+    e.preventDefault();
+    const option = e.target.elements.option.value.trim();
+
+    if (option){
+      alert(option);
+    }
+  }
+
   render() {
     return (
       <div>
-        <p>Option Component Here </p>
-        <p>Even more</p>
+        <form onSubmit = {this.onFormSubmit}>
+          <input type="text" name="option"/>
+          <button>Add option</button>
+        </form>
       </div>
     );
   }

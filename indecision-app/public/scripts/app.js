@@ -8,6 +8,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var obj = {
+  name: 'Bryan',
+  getName: function getName() {
+    return this.name;
+  }
+};
+
+var getName = obj.getName.bind(obj);
+console.log(getName());
+
 var IndecisionApp = function (_React$Component) {
   _inherits(IndecisionApp, _React$Component);
 
@@ -99,16 +109,20 @@ var Action = function (_React$Component3) {
 var Options = function (_React$Component4) {
   _inherits(Options, _React$Component4);
 
-  function Options() {
+  function Options(props) {
     _classCallCheck(this, Options);
 
-    return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+    var _this4 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+    _this4.handleRemoveAll = _this4.handleRemoveAll.bind(_this4);
+    return _this4;
   }
 
   _createClass(Options, [{
     key: 'handleRemoveAll',
     value: function handleRemoveAll() {
       alert("sup");
+      console.log(this.props.options);
     }
   }, {
     key: 'render',
@@ -165,20 +179,30 @@ var AddOptions = function (_React$Component6) {
   }
 
   _createClass(AddOptions, [{
+    key: 'onFormSubmit',
+    value: function onFormSubmit(e) {
+      e.preventDefault();
+      var option = e.target.elements.option.value.trim();
+
+      if (option) {
+        alert(option);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
         null,
         React.createElement(
-          'p',
-          null,
-          'Option Component Here '
-        ),
-        React.createElement(
-          'p',
-          null,
-          'Even more'
+          'form',
+          { onSubmit: this.onFormSubmit },
+          React.createElement('input', { type: 'text', name: 'option' }),
+          React.createElement(
+            'button',
+            null,
+            'Add option'
+          )
         )
       );
     }
