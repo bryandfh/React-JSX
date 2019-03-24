@@ -20,12 +20,15 @@ var IndecisionApp = function (_React$Component) {
   _createClass(IndecisionApp, [{
     key: 'render',
     value: function render() {
+      var tittle = 'Indecision';
+      var subtittle = 'Put you life in the hands of a computer';
+      var options = ['One', 'Two', 'Four'];
       return React.createElement(
         'div',
         null,
-        React.createElement(Header, null),
+        React.createElement(Header, { tittle: tittle, subtittle: subtittle }),
         React.createElement(Action, null),
-        React.createElement(Options, null),
+        React.createElement(Options, { options: options }),
         React.createElement(AddOptions, null)
       );
     }
@@ -46,18 +49,19 @@ var Header = function (_React$Component2) {
   _createClass(Header, [{
     key: 'render',
     value: function render() {
+
       return React.createElement(
         'div',
         null,
         React.createElement(
           'h1',
           null,
-          'Indecision'
+          this.props.tittle
         ),
         React.createElement(
           'h2',
           null,
-          'Put you life in the hands of a computer'
+          this.props.subtittle
         )
       );
     }
@@ -108,6 +112,9 @@ var Options = function (_React$Component4) {
       return React.createElement(
         'div',
         null,
+        this.props.options.map(function (options) {
+          return React.createElement(Option, { key: options, optionsText: options });
+        }),
         React.createElement(Option, null)
       );
     }
@@ -131,16 +138,7 @@ var Option = function (_React$Component5) {
       return React.createElement(
         'div',
         null,
-        React.createElement(
-          'p',
-          null,
-          'Option Component Here '
-        ),
-        React.createElement(
-          'p',
-          null,
-          'Option Component! '
-        )
+        this.props.optionsText
       );
     }
   }]);
@@ -167,6 +165,11 @@ var AddOptions = function (_React$Component6) {
           'p',
           null,
           'Option Component Here '
+        ),
+        React.createElement(
+          'p',
+          null,
+          'Even more'
         )
       );
     }
