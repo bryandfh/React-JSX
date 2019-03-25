@@ -11,19 +11,12 @@ console.log('nameConst', nameConst);
 
 // Block scoping
 
-const fullName = 'Jena Mead';
+const fullName = 'Jen Mead';
 let firstName;
 
 if (fullName) {
   firstName = fullName.split(' ')[0];
-  //firstName = (x) => x.split(' ')[0];
   console.log(firstName);
 }
 
-let getFirstName = (x) => {
-  return x.split(' ')[0];
-};
-
-
-
-//console.log(fullName.split(' ')[0]);
+console.log(firstName);
