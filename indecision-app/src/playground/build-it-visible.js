@@ -1,4 +1,4 @@
-class Counter extends React.Component {
+class VisibilityToggle extends React.Component {
   constructor(props){
     super(props);
     this.Toggle = this.Toggle.bind(this);
@@ -23,13 +23,11 @@ class Counter extends React.Component {
         <button onClick = {this.Toggle}>{this.state.visibility  ? "Hide" : "Show"}</button>
         {this.state.visibility && <p>{this.state.options}</p>}
       </div>
-
-      /* */
     );
   }
 }
 
-ReactDOM.render(<Counter />, document.getElementById('app'))
+ReactDOM.render(<VisibilityToggle />, document.getElementById('app'))
 /*const appRoot = document.getElementById('app');
 
 let app = {
