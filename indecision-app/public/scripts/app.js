@@ -166,12 +166,6 @@ var AddOption = function (_React$Component2) {
 
       var option = e.target.elements.option.value.trim();
       var error = this.props.handleAddOption(option);
-
-      /*
-      this.setState(() => {
-        return { error };
-      });*/
-
       this.setState(function () {
         return { error: error };
       });
